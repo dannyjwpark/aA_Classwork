@@ -187,36 +187,7 @@ p Fibonacci_rec(10)
 
 puts '--------------------------------------------------------'
 
-#binary search
-# def bsearch(array, target)
 
-#     # base cases
-#     return nil if array.include?(target) == false
-#     # return ORIGINAL.index(array[0]) if array.length == 1
-#     return array.index(array[0]) if array.length == 1
-
-# #recursive steps
-#     #step1
-#         # array = [1,2,3,4,5,6]   , target = 4 
-#     partitioned = array.partition{|num| num < array[array.length/2]}
-#         # partitioned = [[1,2,3],[4,5,6]]
-#     new_array = partitioned.select {|subarr| subarr.include?(target)}
-#         # new_array = [4,5,6]
-#     output_array = bsearch(new_array,target)
-#     # ORIGINAL.index(output_array)
-#     array.index(output_array)
-
-#     #step2
-#         # array = [4,5,6]   , target = 4 
-#         # partitioned = [[1,2,3],[4,5,6]]
-#         # new_array = [4],[5,6]
-
-#     #step3
-#         # array = [4]   , target = 4 
-#         # array.length == 1   => new_array[0] = 4  => array.index(4) = 3
-
-
-# end
 
 def bsearch(array, target, extra_idx=0)
     # debugger
@@ -231,27 +202,24 @@ def bsearch(array, target, extra_idx=0)
         return center_idx + extra_idx
     end
 
-    if array.length.odd?
+    # if array.length.odd?
+    #     left_side = array[0...center_idx]
+    #     right_side = array[center_idx+1..-1]
+    # else 
         left_side = array[0...center_idx]
         right_side = array[center_idx+1..-1]
-    else 
-        left_side = array[0...center_idx]
-        right_side = array[center_idx..-1]
-    end
+    # end
 
     if array[center_idx] < target
-        bsearch(right_side, target, extra_idx)
         extra_idx += (array.length - right_side.length)
+        bsearch(right_side, target, extra_idx)
         # p "right side! #{right_side}"
     elsif array[center_idx] > target
         bsearch(left_side, target, extra_idx)
         # p "left side! #{left_side}"
     end
 
-    
-
 end
-
 
 puts 'BINARY SEARCH:'
 p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9],4)                #3
@@ -259,6 +227,9 @@ puts
 p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],9)    #8
 puts
 p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],11)   #10
+puts
+p bsearch([1,3,4,8,12,17],4)        #2
+
 # p Array.bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9],4)
 
 
