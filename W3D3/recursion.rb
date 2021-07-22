@@ -229,14 +229,83 @@ puts
 p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],11)   #10
 puts
 p bsearch([1,3,4,8,12,17],4)        #2
+puts
+p bsearch([1,3,4,8,12,17],5)        #nil
+
 
 # p Array.bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9],4)
 
 
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]  idx of 11 : 10
-
+                                                # extra += 7
 #                      [8, 9, 10, 11, 12, 13]  idx of 11 : 3
-
+                                                #  extra +=3
 #                                [11, 12, 13]   idx of 11 : 0
+                                                #  extra +=0
+#                                [11]            idx of 11 : 0
+
 
                         
+puts '--------------------------------------------------------'
+
+#Merge Sort
+
+def merge_sort (arr)
+
+    return arr if arr = arr.sort
+    return arr if arr.length == 0
+    return arr if arr.length == 1
+
+    center_idx = arr.length/2
+    arr_lower = arr[0...center_idx].sort
+    arr_higher = arr[center_idx..-1].sort
+
+    merge_sort(arr_lower) + merge_sort(arr_higher)
+
+end
+
+p merge_sort([1,10,7,9,3,6])
+p merge_sort([38,27,43,3,9,82,10])
+
+puts '--------------------------------------------------------'
+
+# Array_subsets
+
+def subsets(arr)
+    
+    return if 
+
+    n_perm = factorial(arr.length)
+
+
+
+end
+
+def factorial(num)
+    return num if num == 1
+
+    num * factorial(num-1)
+end
+
+def fact_combinations(length)
+    output = []
+
+    count = 0
+    while count<length
+        (1..length).each_with_index do |ele,i|
+            if count == 0
+                output.push(i)
+            elsif i+count <=length
+                output.push((i..i+count).to_a)
+            end
+            count +=1
+        end
+    end
+
+    output
+end
+
+p subsets([1,2,3])
+p subsets([2,4,6,8,10])
+
+p fact_combinations(4)
