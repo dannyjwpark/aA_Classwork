@@ -72,7 +72,7 @@ puts '--------------------------------------------------------'
 #     # return the array if it is not nested
 #     # return array if array[0].class != Array
 #     return output if array.empty?
-        
+
 #     # push the array without the first array + the original array
 #     shifted = array.shift
 #     output << array.shift + dup(array)
@@ -94,14 +94,14 @@ def dup(arrays)
     return output if arrays[1] == nil
     # debugger
     arrays.shift
-    output + dup(arrays)    
+    output + dup(arrays)
     # ["a"]
     # ["a"] << "a" << dup([["b","c"], [["d","e"]], [[["f"]]]]])
 
     # ["a"] << "a" << ["b","c"] << dup([[["d","e"]], [[["f"]]]]])
 
     # ["a"] << "a" << ["b","c"] << << [["d","e"]] << dup([[[["f"]]]]])
-    
+
     # ["a"] << "a" << ["b","c"] << << [["d","e"]] << [[["f"]]]] << dup([])
 end
 
@@ -136,13 +136,13 @@ p dup([])   #=> []
 puts '--------------------------------------------------------'
 def Fibonacci_iter(n)
     if n==1
-        output = [0] 
+        output = [0]
     elsif n==2
-        output = [0,1] 
+        output = [0,1]
     else
         output = [0,1]
     end
-    
+
     (3..n).each do |i|
         output << output[-2] + output[-1]
     end
@@ -155,7 +155,7 @@ puts
 
 
 def Fibonacci_rec(n)
-    
+
     # base case
     return [0] if n==1
     return [0,1] if n==2
@@ -167,8 +167,8 @@ def Fibonacci_rec(n)
             # output = fib(4-1)  << 1+1
             # output = fib(3-1)  << 0+1
             # output = fib(2-1)  << 0
-    
-    
+
+
     output << output[-2] + output[-1]
     # output = Fibonacci_rec(n-2) + Fibonacci_rec(n-1)
 
@@ -178,7 +178,7 @@ def Fibonacci_rec(n)
     # fib(3) = [0,1] << 1
     # fib(2) = [0,1]
 
-    
+
 end
 
 puts 'recursive'
@@ -189,14 +189,14 @@ puts '--------------------------------------------------------'
 
 
 
-def bsearch(array, target, extra_idx=0)
+def bsearch_1(array, target, extra_idx=0)
     # debugger
-    
+
     # extra_idx = 0
     # p extra_idx
 
     return nil if array.include?(target) == false
-    
+
     center_idx = array.length/2
     if array[center_idx] == target
         return center_idx + extra_idx
@@ -205,32 +205,61 @@ def bsearch(array, target, extra_idx=0)
     # if array.length.odd?
     #     left_side = array[0...center_idx]
     #     right_side = array[center_idx+1..-1]
-    # else 
+    # else
         left_side = array[0...center_idx]
         right_side = array[center_idx+1..-1]
     # end
 
     if array[center_idx] < target
         extra_idx += (array.length - right_side.length)
-        bsearch(right_side, target, extra_idx)
+        bsearch_1(right_side, target, extra_idx)
         # p "right side! #{right_side}"
     elsif array[center_idx] > target
-        bsearch(left_side, target, extra_idx)
+        bsearch_1(left_side, target, extra_idx)
         # p "left side! #{left_side}"
     end
 
 end
 
+
+def bsearch_2(arr,target)
+  return nil if arr.empty?
+
+  mid = arr.length / 2
+
+  return mid if arr[mid] == target
+
+  left = arr[0...mid]
+  right = arr[mid+1..-1]
+
+  if target < arr[mid]
+    bsearch_2(left,target)
+  else
+    bsearch_2(right,target) ? 1 + mid + bsearch_2(right,target) : nil
+  end
+
+end
+
 puts 'BINARY SEARCH:'
-p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9],4)                #3
+p bsearch_1([1, 2, 3, 4, 5, 6, 7, 8, 9],4)                #3
 puts
-p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],9)    #8
+p bsearch_1([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],9)    #8
 puts
-p bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],11)   #10
+p bsearch_1([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],11)   #10
 puts
-p bsearch([1,3,4,8,12,17],4)        #2
+p bsearch_1([1,3,4,8,12,17],4)        #2
 puts
-p bsearch([1,3,4,8,12,17],5)        #nil
+p bsearch_1([1,3,4,8,12,17],5)        #nil
+
+p bsearch_2([1, 2, 3, 4, 5, 6, 7, 8, 9],4)                #3
+puts
+p bsearch_2([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],9)    #8
+puts
+p bsearch_2([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13],11)   #10
+puts
+p bsearch_2([1,3,4,8,12,17],4)        #2
+puts
+p bsearch_2([1,3,4,8,12,17],5)        #nil
 
 
 # p Array.bsearch([1, 2, 3, 4, 5, 6, 7, 8, 9],4)
@@ -245,7 +274,7 @@ p bsearch([1,3,4,8,12,17],5)        #nil
 #                                [11]            idx of 11 : 0
 
 
-                        
+
 puts '--------------------------------------------------------'
 
 #Merge Sort
@@ -264,6 +293,7 @@ def merge_sort (arr)
 
 end
 
+p 'Merge Sort'
 p merge_sort([1,10,7,9,3,6])
 p merge_sort([38,27,43,3,9,82,10])
 
@@ -271,15 +301,17 @@ puts '--------------------------------------------------------'
 
 # Array_subsets
 
-def subsets(arr)
-    
-    return if 
-
-    n_perm = factorial(arr.length)
-
-
-
-end
+# def subsets(arr)
+#
+#     return if
+#
+#     n_perm = factorial(arr.length)
+#
+# end
+# p 'subsets'
+# p subsets([1,2,3])
+# p subsets([2,4,6,8,10])
+puts '----------------------------------'
 
 def factorial(num)
     return num if num == 1
@@ -305,7 +337,7 @@ def fact_combinations(length)
     output
 end
 
-p subsets([1,2,3])
-p subsets([2,4,6,8,10])
 
+p "Factorial"
 p fact_combinations(4)
+puts '----------------------------------'
