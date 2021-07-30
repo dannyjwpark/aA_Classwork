@@ -63,9 +63,18 @@ end
 # The strings are then anagrams if and only if the sorted versions are the identical.
 # What is the time complexity of this solution? Is it better or worse than #second_anagram??
 
+def third_anagram?(str1,str2)
+    arr1 = str1.split('') #k
+    arr2 = str2.split('') #k
+    arr1.sort == arr2.sort #2n^2
 
+end
 
+# p third_anagram?('elvis', "lives")  # true
+# p third_anagram?('abc', "bac")      # true
+# p third_anagram?('sadfsafsf', "berewrac")  # false
 
+#time complexity : O(N^2)
 ####################################################################################################
 # Phase IV:
 # Write one more method #fourth_anagram?. This time, use two Hashes to store the number of times each 
@@ -76,3 +85,29 @@ end
 # Bonus: Do it with only one hash.
 # Discuss the time complexity of your solutions together, then call over your TA to look at them.
 
+def fourth_anagram?(str1, str2)
+    hash1 = Hash.new(0)
+    hash2 = Hash.new(0)
+
+    str1.each_char { |char| hash1[char] += 1 }
+    str2.each_char { |char| hash2[char] += 1 }
+
+    hash1 == hash2
+end
+
+# p fourth_anagram?('elvis', "lives")  # true
+# p fourth_anagram?('abc', "bac")      # true
+# p fourth_anagram?('sadfsafsf', "berewrac")  # false
+
+def bonus_anagram?(str1, str2)
+    hash= Hash.new(0)
+
+    str1.each_char { |char| hash[char] += 1 }
+    str2.each_char { |char| hash[char] -= 1 }
+
+    hash.each_value.all? { |value| value == 0 }
+end
+
+p bonus_anagram?('elvis', "lives")  # true
+p bonus_anagram?('abc', "bac")      # true
+p bonus_anagram?('sadfsafsf', "berewrac")  # false
