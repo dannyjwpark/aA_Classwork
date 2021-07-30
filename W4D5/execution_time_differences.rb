@@ -48,17 +48,19 @@ end
 
 # Discuss the time complexity of this solution.
 
-def largest_contiguous_subsum (arr)
-    subarrs = []
-    (0...arr.length).each do |i|
-        (i...arr.length).each do |j|
-            if arr[i..j].sum >subarrs.sum
-                subarrs = arr[i..j]
-            end
-        end
-    end
-    subarrs.sum
-end
+# def largest_contiguous_subsum (arr)
+    # subarrs = nil
+    # (0...arr.length).each do |i|
+    #     (i...arr.length).each do |j|
+    #         if subarrs == nil || arr[i..j].sum > subarrs.sum
+    #             subarrs = arr[i..j]
+    #         end
+    #     end
+    # end
+    # subarrs.sum
+# end
+
+# time complexity: O(n * (n -1)) => O(n^2 - n) => O(n^2) 
 
 
 # Phase II
@@ -70,29 +72,24 @@ end
 # list2 = [2, 3, -6, 7, -6, 7]
     
 def largest_contiguous_subsum (arr)
-
-    largest_sum = 0
-    sum_curr = nil
-
-    i=0
-    while i<arr.length
-        sum_curr = arr[0..i].sum
-        if sum_curr>largest_sum
-            largest_sum = sum_curr
+    largest_sum = arr[0] #8
+    sum_curr = arr[0] #1
+    i = 1
+    while i < arr.length 
+        #add eles to sum_curr until sum_curr <= 0 
+         if sum_curr <= 0
+            sum_curr = 0
         end
-        i+=1
+        sum_curr += arr[i] 
+        p "sum_curr = #{sum_curr}" 
+        largest_sum = sum_curr if sum_curr > largest_sum
+        p "largest_sum = #{largest_sum}"
+        # sum_curr = 0 
+        #if sum_curr > largest_sum set largest_sum = sum_curr
+        
+        i += 1 
     end
-
-    k = 0
-    while k<arr.length
-        sum_curr = arr[k..-1].sum
-        if sum_curr>largest_sum
-            largest_sum = sum_curr
-        end
-        k+=1
-    end
-
-    return largest_sum
+    largest_sum
 end
 
 # [1] -> 2^1 = 2          [] [1]
