@@ -92,7 +92,9 @@ def fourth_anagram?(str1, str2)
     str1.each_char { |char| hash1[char] += 1 }
     str2.each_char { |char| hash2[char] += 1 }
 
-    hash1 == hash2
+     hash1 == hash2
+
+
 end
 
 # p fourth_anagram?('elvis', "lives")  # true
