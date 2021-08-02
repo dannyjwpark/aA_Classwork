@@ -40,7 +40,7 @@ p brute_force(arr2, 2)  #false
 # [1,2,3,4,5,6]
 # [1,2,3] [4,5,6]
 def okay_two_sum?(arr,target)
-    arr.sorted!
+    arr.sort!
 
     return arr if arr.length == 2 && arr.sum == target
 
