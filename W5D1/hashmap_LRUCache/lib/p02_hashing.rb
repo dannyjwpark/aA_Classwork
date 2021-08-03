@@ -25,7 +25,7 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    alphabet = ('a'..'z').to_a
+    alphabet = (:a..:z).to_a
     hash = Hash.new(0)
     alphabet.each_with_index { |char,i| hash[char] = i }
     output = []
@@ -33,6 +33,8 @@ class Hash
     keys.each do |key|
       output << hash[key].to_s
     end
-    output.join("").to_i
+    new_output = output.map{|x| x.to_i}.sum
+
+    return new_output
   end
 end
