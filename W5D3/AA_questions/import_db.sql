@@ -15,6 +15,7 @@ CREATE TABLE questions (
     author_id INTEGER,
 
     FOREIGN KEY(author_id) REFERENCES users(id)
+    -- FOREIGN KEY(title) REFERENCES replies(subjects)
 );
 
 -- Add a question_follows table.
@@ -35,7 +36,23 @@ CREATE TABLE question_follows (
     -- Don't forget to keep track of the body of a reply.
     -- "Top level" replies don't have any parent, but all replies have a subject question.
     -- It's okay for a column to be self referential; a foreign key can point to a primary key in the same table.
+CREATE TABLE replies (
+    reply_id INTEGER PRIMARY KEY,
+    order INTEGER,
+    subjects TEXT,
+    reply TEXT,
+    questioner_id INTEGER,
+    body TEXT,
 
+    FOREIGN KEY (subjects) REFERENCES questions(title)
+    FOREIGN KEY (reply) REFERENCES replies(reply_id)
+    FOREIGN KEY (questioner_id) REFERENCES questions(author_id)
+);
+
+INSERT INTO
+replies (subjects, child_reply)
+VALUES
+(SQL, answer)
 
 -- Add a question_likes table.
     -- Users can like a question.
