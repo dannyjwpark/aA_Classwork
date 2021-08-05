@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many(:enrollments, {
+    belongs_to(:enrollments, {
         primary_key: :id,
         foreign_key: :course_id,
         class_name: :Enrollment
@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     has_many(:enrolled_courses, {
         through: :enrollments,
-        source: :User
+        source: :course
     })
 
 end
