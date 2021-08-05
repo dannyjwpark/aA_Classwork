@@ -4,7 +4,9 @@
 #
 #  id         :bigint           not null, primary key
 #  course_id  :integer
+    # belongs to : Course
 #  student_id :integer
+    # belongs to : user
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -21,7 +23,6 @@ class Enrollment < ApplicationRecord
         class_name: :User
     })
 
-    
 
 end
 
