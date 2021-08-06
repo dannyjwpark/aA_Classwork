@@ -104,6 +104,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.2-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.12.2-x86_64-linux)
+      racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -194,7 +196,9 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   annotate
@@ -219,7 +223,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   2.2.21
+   2.2.23
