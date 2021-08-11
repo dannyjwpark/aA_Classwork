@@ -1,0 +1,15 @@
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.7/ext/bootsnap
+/Users/michaeldeshay/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210811-70732-lduqte.rb extconf.rb
+creating Makefile
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.7/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.7/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.7.7/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210811-70732-1apydur/bootsnap

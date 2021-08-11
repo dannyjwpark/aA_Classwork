@@ -1,0 +1,16 @@
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/racc-1.5.2/ext/racc/cparse
+/Users/michaeldeshay/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210811-70732-1hc1mvm.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/michaeldeshay/Desktop/new/aA_Classwork/W6D3/FirstRoutes_and_Controllers/vendor/bundle/ruby/2.5.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20210811-70732-1aiq0vx/racc
