@@ -14,17 +14,29 @@ class UsersController < ApplicationController
         end
     end
 
-    def new
-    end
+    # def new
+    # end
 
     def show
         render json: User.find()
     end
 
     def update
+        user = User.find_by(id: params[:id])
+        if user.update(user_params)
+            render json: user
+        else
+            render json: user.errors.full_messages, status: unprocessable_entity
+        end
     end
 
     def destroy
+        user = User.find_by(id: params[:id])
+        if user.destroy
+            redirect_to users_url(user)
+        else
+            render json: "Didn't work"
+        end
     end
 
     private
