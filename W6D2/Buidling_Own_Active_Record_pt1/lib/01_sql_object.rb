@@ -6,8 +6,8 @@ require 'active_support/inflector'
 class SQLObject
   def self.columns
     # ...
-    columns ||= @columns
-    return columns
+    @columns = nil?
+    return @columns
   end
 
   def self.finalize!
