@@ -52,3 +52,38 @@ Processing by Rails::WelcomeController#index as */*
 Completed 200 OK in 84ms (Views: 38.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users" for ::1 at 2021-08-11 15:08:31 -0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/michaeldeshay/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 45ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users?%22fav_food%22=%22pizza%22&%22controller%22=%22users%22&%22action%22=%22create%22" for ::1 at 2021-08-11 15:15:03 -0700
+Processing by UsersController#create as */*
+  Parameters: {"\"fav_food\""=>"\"pizza\"", "\"controller\""=>"\"users\"", "\"action\""=>"\"create\""}
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users?%27fav_food%27=%27pizza%27&%22controller%22=%22users%22&%22action%22=%22create%22" for ::1 at 2021-08-11 15:15:32 -0700
+Processing by UsersController#create as */*
+  Parameters: {"'fav_food'"=>"'pizza'", "\"controller\""=>"\"users\"", "\"action\""=>"\"create\""}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/:id" for ::1 at 2021-08-11 15:16:58 -0700
+Processing by UsersController#show as */*
+  Parameters: {"id"=>":id"}
+No template found for UsersController#show, rendering head :no_content
+Completed 204 No Content in 488ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for ::1 at 2021-08-11 15:17:22 -0700
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+No template found for UsersController#show, rendering head :no_content
+Completed 204 No Content in 579ms (ActiveRecord: 0.0ms)
+
+
