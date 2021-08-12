@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.new(username: 'Jimmy')
-User.new(username: 'Sarah')
-User.new(username: 'Lee')
+# create = .new + .save comprised
+User.create(username: 'Jimmy')
+User.create(username: 'Sarah')
+User.create(username: 'Lee')
 
-Artwork.new(title: 'Statue of Liberty', image_url: 'statue_of_liberty.png', artist_id: 1)
-Artwork.new(title: 'Sunshine', image_url: 'sunshine.png', artist_id: 2)
+Artwork.create(title: 'Statue of Liberty', image_url: 'statue_of_liberty.png', artist_id: 1)
+Artwork.create(title: 'Sunshine', image_url: 'sunshine.png', artist_id: 2)
 
 
-ArtworkShare.new(artwork_id: 1, viewer_id: 2)
-ArtworkShare.new(artwork_id: 2, viewer_id: 3)
+ArtworkShare.create(artwork_id: 1, viewer_id: 2)
+ArtworkShare.create(artwork_id: 2, viewer_id: 3)

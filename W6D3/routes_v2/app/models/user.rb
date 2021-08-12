@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    validates :name, :email, presence: true
+    validates :username, presence: true
 
     has_many :artworks,
         primary_key: :id,
