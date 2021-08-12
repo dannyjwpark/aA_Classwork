@@ -5,13 +5,14 @@ class ArtworkSharesController < ApplicationController
         if artwork_share.save
             redirect_to artwork_shares_url(artwork_share)
         else
-            render json: artwork_share.errors.full_messages, status: unprocessable_entity
+            render json: artwork_share.errors.full_messages, status: 404
         end
     end
 
     private
     def artwork_shares_params
         params.require(:artwork_share).permit(:artwork_id, :viewer_id)
+        # params.(:artwork_share).permit(:artwork_id, :viewer_id)
 
     end
 

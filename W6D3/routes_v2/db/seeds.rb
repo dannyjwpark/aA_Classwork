@@ -10,9 +10,12 @@
 User.create(username: 'Jimmy')
 User.create(username: 'Sarah')
 User.create(username: 'Lee')
+User.create(username: 'David')
 
 Artwork.create(title: 'Statue of Liberty', image_url: 'statue_of_liberty.png', artist_id: 1)
 Artwork.create(title: 'Sunshine', image_url: 'sunshine.png', artist_id: 2)
+Artwork.create(title: 'Moonshine', image_url: 'moonshine.png', artist_id: 3)
+Artwork.create(title: 'hello', image_url: 'hello.png', artist_id: 4)
 
 
 ArtworkShare.create(artwork_id: 1, viewer_id: 2)
