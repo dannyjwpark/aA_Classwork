@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     # end
 
     def show
-        render json: User.find()
+        @user = User.find_by(id: params[:id])
+        render json: @user
     end
 
     def update
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
         if user.destroy
             redirect_to users_url(user)
         else
-            render json: "Didn't work"
+            render json: user.errors.full_messages, status: unprocessable_entity
         end
     end
 
