@@ -833,3 +833,96 @@ ActionController::ParameterMissing (param is missing or the value is empty: artw
   
 app/controllers/artwork_shares_controller.rb:14:in `artwork_shares_params'
 app/controllers/artwork_shares_controller.rb:4:in `create'
+Started POST "/artwork_shares?artwork_share[artwork_id]=1&artwork_share[viewer_id]=1" for ::1 at 2021-08-12 10:29:57 -0700
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/michaeldeshay/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"user"=>{"username"=>"Johnny"}, "artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtworkShare Create (1.8ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)[0m  [["artwork_id", 1], ["viewer_id", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+Completed 500 Internal Server Error in 348ms (ActiveRecord: 7.5ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: artwork_shares.artwork_id: INSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)):
+  
+app/controllers/artwork_shares_controller.rb:5:in `create'
+Started POST "/artwork_shares?artwork_share[artwork_id]=2&artwork_share[viewer_id]=1" for ::1 at 2021-08-12 10:32:17 -0700
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"user"=>{"username"=>"Johnny"}, "artwork_share"=>{"artwork_id"=>"2", "viewer_id"=>"1"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtworkShare Create (1.6ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)[0m  [["artwork_id", 2], ["viewer_id", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.8ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: artwork_shares.artwork_id: INSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)):
+  
+app/controllers/artwork_shares_controller.rb:5:in `create'
+Started POST "/artwork_shares?artwork_share[artwork_id]=1&artwork_share[viewer_id]=1" for ::1 at 2021-08-12 10:32:53 -0700
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"user"=>{"username"=>"Johnny"}, "artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtworkShare Create (2.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)[0m  [["artwork_id", 1], ["viewer_id", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+Completed 500 Internal Server Error in 288ms (ActiveRecord: 7.2ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: artwork_shares.artwork_id: INSERT INTO "artwork_shares" ("artwork_id", "viewer_id") VALUES (?, ?)):
+  
+app/controllers/artwork_shares_controller.rb:5:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeleteArtworkId (20210812173510)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aartwork_shares" ("id" integer NOT NULL PRIMARY KEY, "artwork_id" integer NOT NULL, "viewer_id" integer NOT NULL)[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aartwork_shares_on_viewer_id" ON "aartwork_shares" ("viewer_id")[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aartwork_shares_on_artwork_id" ON "aartwork_shares" ("artwork_id")[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aartwork_shares" ("id","artwork_id","viewer_id")
+                     SELECT "id","artwork_id","viewer_id" FROM "artwork_shares"[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "artwork_shares"[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "artwork_shares" ("id" integer NOT NULL PRIMARY KEY, "viewer_id" integer NOT NULL)[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_artwork_shares_on_viewer_id" ON "artwork_shares" ("viewer_id")[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("id","viewer_id")
+                     SELECT "id","viewer_id" FROM "aartwork_shares"[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aartwork_shares"[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "artwork_shares" ADD "artwork_id" integer NOT NULL[0m
+  ↳ db/migrate/20210812173510_delete_artwork_id.rb:5
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9

@@ -1,7 +1,7 @@
 class ArtworkSharesController < ApplicationController
 
     def create
-        artwork_share= ArtworkShare.new(artwork_shares_params)
+        artwork_share = ArtworkShare.new(artwork_shares_params)
         if artwork_share.save
             redirect_to artwork_shares_url(artwork_share)
         else
@@ -14,6 +14,6 @@ class ArtworkSharesController < ApplicationController
         params.require(:artwork_share).permit(:artwork_id, :viewer_id)
 
     end
-    
+
 
 end
