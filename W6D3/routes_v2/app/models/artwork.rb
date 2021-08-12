@@ -7,10 +7,18 @@ class Artwork < ApplicationRecord
     has_many :artwork_shares,
         primary_key: :id,
         foreign_key: :artwork_id,
-        class_name: :ArtworkShare
+        class_name: :ArtworkShare,
+        dependent: :destroy
 
     has_many :viewers_shared_with,
         through: :artwork_shares,
         source: :shared_viewers
+
+    has_many :comments,
+    primary_key: :id,
+    foreign_key: :artwork_id
+    class_name: :Comment,
+    dependent: :destroy
+
     
 end

@@ -1,4 +1,5 @@
 # Prefix Verb   URI Pattern                             Controller#Action
+# user_artworks GET    /users/:user_id/artworks(.:format)                                                       artworks#index
 # users GET    /users(.:format)                        users#index
 # POST   /users(.:format)                        users#create
 # user GET    /users/:id(.:format)                    users#show
