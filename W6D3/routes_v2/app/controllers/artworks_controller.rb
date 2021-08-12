@@ -7,7 +7,19 @@ class ArtworksController < ApplicationController
         # @artwork = Artwork.
         # render json: @artwork
        
-        artworks = Artwork.
+        artworks = Artwork.find_by_sql(
+            " SELECT artworks.*
+            FROM artworks 
+            JOIN artwork_shares 
+            ON artworks.id = artwork_shares.artwork_id
+            JOIN users
+            ON users.id = artwork_shares.viewer_id
+            WHERE artwork_shares.viewer_id = #{user_id} 
+                OR artworks.artist_id = #{user_id} 
+            "
+        )
+
+        render json: artworks
         
         
     end
