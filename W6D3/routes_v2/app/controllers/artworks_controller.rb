@@ -1,14 +1,16 @@
 class ArtworksController < ApplicationController
-    def index(user_id)
+    def index
         # @artwork = Artwork.find_by(artist_id = user_id)
         # ArtworkShare.find_by(viewer_id = user_id)
         
         
         # @artwork = Artwork.
         # render json: @artwork
+
+        user_id = params[:user_id]
        
         artworks = Artwork.find_by_sql(
-            " SELECT artworks.*
+            " SELECT DISTINCT artworks.*
             FROM artworks 
             JOIN artwork_shares 
             ON artworks.id = artwork_shares.artwork_id

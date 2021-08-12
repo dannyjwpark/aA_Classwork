@@ -3,7 +3,7 @@ class ArtworkShare < ApplicationRecord
         primary_key: :id,
         foreign_key: :viewer_id,
         class_name: :User
-s
+
     belongs_to :artwork,
         primary_key: :id,
         foreign_key: :artwork_id,
