@@ -7,7 +7,7 @@ class ArtworksController < ApplicationController
         # @artwork = Artwork.
         # render json: @artwork
        
-        
+        artworks = Artwork.
         
         
     end
