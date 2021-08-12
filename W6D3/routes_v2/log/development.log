@@ -2294,3 +2294,4 @@ Processing by ArtworkSharesController#create as */*
 Completed 200 OK in 149ms (Views: 2.0ms | ActiveRecord: 10.5ms)
 
 
+  [1m[36mArtworkShare Load (0.8ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
