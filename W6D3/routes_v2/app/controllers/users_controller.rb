@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
 
     def index
+        # users can search for other users by name
+        # check if a query is present in the request params.
         @user = User.all
+        if params.has_key?("username")
+            @user = User.where(username: params[]:username])
+        # else
+        #     render json: @user
+        end
         render json: @user
     end
 
