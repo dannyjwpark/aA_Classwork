@@ -5,9 +5,7 @@ class UsersController < ApplicationController
         # check if a query is present in the request params.
         @user = User.all
         if params.has_key?("username")
-            @user = User.where(username: params[]:username])
-        # else
-        #     render json: @user
+            @user = User.where(username: params[:username])
         end
         render json: @user
     end
