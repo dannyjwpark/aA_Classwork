@@ -9,7 +9,7 @@ class ArtworksController < ApplicationController
 
         user_id = params[:user_id]
        
-        artworks = Artwork.find_by_sql(
+        @artworks = Artwork.find_by_sql(
             " SELECT DISTINCT artworks.*
             FROM artworks 
             JOIN artwork_shares 
@@ -21,10 +21,19 @@ class ArtworksController < ApplicationController
             "
         )
 
-        render json: artworks
+        render json: @artworks
+        # render :index
         
         
     end
+
+    # def index
+    #     if params[:user_id]
+    #         render json: Artwork.artworks_for_user_id(params[:user_id])
+    #     elsif params[:collection_id]
+    #         render json: Artwork.artworks_for_collection_id(params[:collection_id])
+    #     end
+    # end
 
     def create
         @artwork = Artwork.new(artwork_params)
@@ -36,9 +45,21 @@ class ArtworksController < ApplicationController
     end
 
 
+    # def show
+    #     @artwork = Artwork.find_by(id: params[:id])
+    #     render json: @artwork
+    # end
+
     def show
-        @artwork = Artwork.find_by(id: params[:id])
-        render json: @artwork
+        @artwork = Artwork.find_by(params[:id])
+        # render json: @artwork
+        
+        unless @artwork
+            redirect_to artworks_url
+            return
+        end
+
+        render :show
     end
 
     def update

@@ -22,7 +22,7 @@
 # comments GET    /comments(.:format)              comments#index
 # comments POST   /comments(.:format)               comments#create
 # comment DELETE /comments/:id(.:format)          comments#destroy
-
+# new_comment GET    /comments/new(.:format)      comments#new
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :destroy, :index, :show, :update ] do
@@ -33,6 +33,6 @@ Rails.application.routes.draw do
 
   resources :artworks, only: [:create, :destroy, :index, :show, :update ]
 
-  resources :comments, only: [:create, :destroy, :index]
+  resources :comments, only: [:create, :destroy, :index, :new]
 
 end
