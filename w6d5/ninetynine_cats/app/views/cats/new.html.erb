@@ -1,0 +1,41 @@
+<h1> Add a cat to the list </h1>
+
+<%= render 'form', action: :new, cat: @cat %>
+
+<!--
+<%# action: url to which data are sent to %>
+<%# method: http method being used %>
+<form action="<%= cats_url %>" method = "post">
+    <%# for: which input the label is tied to %>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="cat[name]">
+    <br>
+    <label for="male">Sex: Male</label>
+    <input type="radio" id="sex" name="cat[sex]" value="M">
+    <label for="female">Female</label>
+    <input type="radio" id="sex" name="cat[sex]" value="F">
+    
+  <br>
+    <br>
+    <label for="color">Color:</label>
+    <select id="color" name="cat[color]">
+        <option disabled selected>--select color--</option>
+        <%# "Black", "Blue", "Brown", "Mixed", "Orange","White" %>
+        <option value="Black">Black</option>
+        <option value="Blue">Blue</option>
+        <option value="Brown">Brown</option>
+        <option value="Mixed">Mixed</option>
+        <option value="Orange">Orange</option>
+        <option value="White">White</option>
+    ></select>
+    <br>
+    <label for="birth_date">Birthday:</label>
+    <input id="birth_date" type="date" name="cat[birth_date]">
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="cat[description]"></textarea>
+    <br>
+
+    <input type="submit" value="Add cat to list"> 
+</form>
+-->

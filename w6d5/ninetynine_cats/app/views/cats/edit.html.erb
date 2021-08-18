@@ -1,0 +1,57 @@
+<%# <h1>Edit a cat's info</h1>
+<%= render 'shared/errors' %>
+<%# <%= render 'form', cat: @cat%>
+
+<%= render 'form', cat: @cat, action: :edit %>
+
+<!--
+<h1> Update a cat's info </h1>
+
+<%# action: url to which data are sent to %>
+<%# method: http method being used %>
+<form action="<%= cat_url(@cat) %>" method = "post">
+    <%# hidden: hides an input from being exposed to the user, but data is included in the form %>
+    <%# _method:  overrides the specified method on the form tag & uses _method instead %>
+    <input type="hidden" name="_method" value="PATCH">
+
+
+    <%# for: which input the label is tied to %>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="cat[name]" value = "<%= @cat.name %>">
+    <br>
+
+    <label for="male">Sex: Male</label>
+    <input type="radio" id="sex" name="cat[sex]" value=value = "<%= @cat.sex %>">
+    <label for="female">Female</label>
+    <input type="radio" id="sex" name="cat[sex]" value=value = "<%= @cat.sex %>">
+    
+    <br>
+
+    <label for="color">Color:</label>
+    <select id="color" name="cat[color]">
+        <%# <option disabled selected>--select color--</option> %>
+        <option value="Black" <%= @cat.color== "Black" ? "selected" : "" %>>Black</option>
+        <option value="Blue" <%= @cat.color== "Blue" ? "selected" : "" %>>Blue</option>
+        <option value="Brown" <%= @cat.color== "Brown" ? "selected" : "" %>>Brown</option>
+        <option value="Mixed" <%= @cat.color== "Mixed" ? "selected" : "" %>>Mixed</option>
+        <option value="Orange" <%= @cat.color== "Orange" ? "selected" : "" %>>Orange</option>
+        <option value="White" <%= @cat.color== "White" ? "selected" : "" %>>White</option>
+    ></select>
+
+    <br>
+
+    <label for="birth_date">Birthday:</label>
+    <input id="birth_date" type="date" name="cat[birth_date]" value = "<%= @cat.birth_date %>" >
+
+    <br>
+
+    <label for="description">Description:</label>
+    <textarea name="cat[description]">
+        <%= @cat.description%>
+    </textarea>
+    <br>
+
+    <input type="submit" value="Update cat"> 
+</form>
+
+-->
