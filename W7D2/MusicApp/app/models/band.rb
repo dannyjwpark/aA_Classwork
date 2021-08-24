@@ -1,3 +1,5 @@
 class Band < ApplicationRecord
-    validates_presence_or :name
+  validates :name, presence: true, uniqueness: true
+
+  has_many :albums, dependent: :destroy
 end

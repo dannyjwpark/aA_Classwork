@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Music App</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%# <%= javascript_include_tag "application" %> %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> %>
   </head>
-
   <body>
-    <nav class="main-nav">
-    <h1><a href="<%= users_url %>">Music App</a></h1>
-    <div>
-    <% if current_user.nil? %>
-      <p> Logged Out </p>
-      <a href="<%= new_sessions_url %>"><%= highlight "Sign in" %></a>
-      <a href="<%= new_user_url %>"><%= highlight "Sign up" %></a>
-    <% else %>
-      <p> Logged In as: <%= highlight current_user.email %> </p>
-      <form action="<%= session_url %>" method="post">
-        <%= auth_token %>
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Logout">
-      </form>
-    <% end %>
-    </div>
-    </nav>   
 
-    <main>
+    <div class='main-content'>
+      <h1 class='main-logo'><%= highlight "Music App" %></h1>
+
+      <% if logged_in? %>
+        <nav>
+          <a class='button' href="<%= bands_url %>">Take me Home</a>
+          
+          <div class='user-detail'>
+            <p>Logged in as: <%= current_user.email %></p>
+          <form action=<%= session_url %> method='post'>
+            <input
+              type="hidden"
+              name="_method"
+              value="delete">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
+            <input 
+              type="submit" value="Sign Out">
+          </form>
+          </div>
+        </nav>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+
+      <% if flash[:errors] %>
+        <p><%= flash[:errors].join(", ") %></p>
+      <% end %>
+
       <%= yield %>
-    </main>
-
-  <br>
-  <br>
-    <footer class="footer">
-      <%= highlight "MusicApp™" %>
-      <%= yield :footer %>
-    </footer>
+    </div>
 
   </body>
 </html>

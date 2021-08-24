@@ -1,18 +1,22 @@
-<section class="page"><div class="centered-box">
-    <h1>Sign in</h1>
+<h2 class='page-header'>Sign-in</h2>
 
-      <%# <%= render "shared/errors" %> 
+<a class='button' href=<%= new_user_url %> >Go to Sign-up!</a>
 
-    <form action="<%= sessions_url %>" method="post">
-      <%= auth_token %>
+<form class='form' action="<%= sessions_url %>" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <p>
       <label for="user_username"><%= highlight "User Email" %></label>
       <input type="text" name="user[username]" id="user_username">
-      <br>
+  </p>
 
+  <p>
       <label for="user_password"><%= highlight "Password" %></label>
       <input type="password" name="user[password]" id="user_password">
-      <br>
+  </p>
 
-      <input type="submit">
-    </form>
-</div></section>
+  <input type="submit">
+</form>

@@ -22,7 +22,8 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
 
-    def self.generate_session_token
+    def set_activation_token
+        self.activation_token = generate_unique_activation_token
     end
 
     #SPIRE
@@ -61,9 +62,34 @@ class User < ApplicationRecord
     end
 
 
+     def generate_unique_session_token
+    token = SecureRandom.urlsafe_base64(16)
 
+    ##
+    # Just in case there is a session_token conflict, make sure
+    # not to throw a validation error at the user!
+    ##
+    while self.class.exists?(session_token: token)
+      token = SecureRandom.urlsafe_base64(16)
+    end
 
+    token
+  end
 
+  ##
+  # This method is for the mailer!
+  ##
+  def generate_unique_activation_token
+    token = SecureRandom.urlsafe_base64(16)
+    while self.class.exists?(activation_token: token)
+      token = SecureRandom.urlsafe_base64(16)
+    end
+    token
+  end
+
+  def activate!
+    self.update_attribute(:activated, true)
+  end
 
 
 
