@@ -11,6 +11,20 @@ Array.prototype.myEach = function(callback){
     }
 }
 
-NUMS.myEach(num => returnElement(num));
+// NUMS.myEach(num => returnElement(num));
 
+function double(el){
+    console.log(el * 2)
+}
+
+Array.prototype.myMap = function(callback){
+    
+    const mapped = [];
+
+    this.myEach(el => mapped.push(callback(el)) );
+  
+    return mapped;
+}
+
+NUMS.myMap( num => double(num));
 
