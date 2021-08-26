@@ -24,8 +24,6 @@ Function.prototype.myThrottle= function(interval){
 
 
 
-
-
 class Neuron {
     fire() {
         console.log("Firing!");
