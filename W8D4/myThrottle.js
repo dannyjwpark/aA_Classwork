@@ -16,15 +16,11 @@ Function.prototype.myThrottle= function(interval){
             // use setTimeout to set tooSoon back to false after interval milliseconds
             setTimeout( function(){tooSoon = false}, interval)
             // invoke the original function with the original arguments.
-            console.log(arguments);
+            //console.log(arguments);
             that(arguments);
         }
     }
 }
-
-
-
-
 
 class Neuron {
     fire() {
