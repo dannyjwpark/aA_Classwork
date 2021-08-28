@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=document.getElementById("bird-game");new class{constructor(t){this.ctx=t.getContext("2d"),this.dimensions={width:t.width,height:t.height}}}(t),document.body.appendChild(function(){const t=document.createElement("div");return t.innerHTML=_.join(["Hello","webpack"]," "),t}())})();
