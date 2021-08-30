@@ -37,4 +37,24 @@ Game.prototype.moveObjects = function () {
     }
 }
 
+
+Game.prototype.wrap = function(pos) {
+    let x = pos[0];
+    let y = pos[1];
+
+    if (y > DEFAULTS.DIM_Y){
+         y = 0;
+     } else if (y < 0){
+        y = DEFAULTS.DIM_Y;
+     } else if (x > DEFAULTS.DIM_X) {
+        x = 0;
+     } else if (x < 0 ) {
+        x = DEFAULTS.DIM_X;
+     }
+
+     return [x,y];
+}
+
+
+
 module.exports = Game;

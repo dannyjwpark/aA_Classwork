@@ -16,7 +16,7 @@ Util.inherits(Asteroid, MovingObject);
 
 const DEFAULTS = {    
     COLOR: "#ede85f",
-    RADIUS: 25,
+    RADIUS: 10,
     VEL: 4
 }
 

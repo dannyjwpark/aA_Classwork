@@ -1,6 +1,7 @@
 const MovingObject = require("./moving_object.js");
 const Asteroid = require("./asteroid.js");
 const GameView = require("./game_view.js")
+const Game = require("./game.js")
 
 window.MovingObject = MovingObject;
 window.Asteroid = Asteroid;
@@ -12,6 +13,8 @@ console.log("Webpack is working!");
 //Ready function - on load will execute
 document.addEventListener("DOMContentLoaded", function(){
     const canvas = document.getElementById("game-canvas");
+    canvas.width = Game.DEFAULTS.DIM_X;
+    canvas.height = Game.DEFAULTS.DIM_Y;
 
     const ctx = canvas.getContext("2d");
     const gv = new GameView(ctx);
