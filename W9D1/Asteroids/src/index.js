@@ -13,8 +13,8 @@ console.log("Webpack is working!");
 //Ready function - on load will execute
 document.addEventListener("DOMContentLoaded", function(){
     const canvas = document.getElementById("game-canvas");
-    canvas.width = Game.DEFAULTS.DIM_X;
-    canvas.height = Game.DEFAULTS.DIM_Y;
+    canvas.width = 1000;
+    canvas.height = 600;
 
     const ctx = canvas.getContext("2d");
     const gv = new GameView(ctx);

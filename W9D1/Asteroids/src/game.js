@@ -13,7 +13,7 @@ const DEFAULTS = {
 
 Game.prototype.addAsteroids = function() {
     for(let i = 0; i < DEFAULTS.NUM_ASTEROIDS; i++) {
-        let astie = new Asteroid(this.randomPosition());
+        let astie = new Asteroid(this.randomPosition(), this);
         this.asteroids.push(astie);
     }
 }
@@ -31,7 +31,7 @@ Game.prototype.draw = function(ctx) {
 }
 
 Game.prototype.moveObjects = function () {
-    console.log(this.asteroids, " this is the asteroids array")
+    // console.log(this.asteroids, " this is the asteroids array")
     for(let i = 0; i < this.asteroids.length; i++) {
         this.asteroids[i].move()
     }
@@ -44,14 +44,16 @@ Game.prototype.wrap = function(pos) {
 
     if (y > DEFAULTS.DIM_Y){
          y = 0;
-     } else if (y < 0){
+     }
+     if (y < 0){
         y = DEFAULTS.DIM_Y;
-     } else if (x > DEFAULTS.DIM_X) {
+     }
+     if (x > DEFAULTS.DIM_X) {
         x = 0;
-     } else if (x < 0 ) {
+     } 
+     if (x < 0) {
         x = DEFAULTS.DIM_X;
      }
-
      return [x,y];
 }
 
