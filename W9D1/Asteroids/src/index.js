@@ -1,16 +1,11 @@
-import _ from 'lodash';
-
-function component() {
-    const element = document.createElement('div');
-
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Webpack', 'is', 'working!'], ' ');
-
-    return element;
-}
-
-document.body.appendChild(component());
-
 const MovingObject = require("./moving_object.js");
 
 window.MovingObject = MovingObject;
+
+console.log("Webpack is working!");
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    const canvas = document.getElementById("game-canvas");
+    canvas.getContext("2d");
+});
