@@ -9,13 +9,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/asteroid.js":
+/*!*************************!*\
+  !*** ./src/asteroid.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\")\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\")\n\nfunction Asteroid(options) {\n    MovingObject(options.pos, DEFAULTS.COLOR, DEFAULTS.RADIUS, Util.randomVec(10));\n};\n\nUtil.inherits(Asteroid, MovingObject);\n\nconst DEFAULTS = {    \n    COLOR: \"#ede85f\",\n    RADIUS: 25,\n    VEL: 4\n}\n\nconst testA = new Asteroid({ pos: [30, 30] });\n\n//# sourceURL=webpack://Asteroids/./src/asteroid.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\nwindow.MovingObject = MovingObject;\n\nconsole.log(\"Webpack is working!\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function(){\n    const canvas = document.getElementById(\"game-canvas\");\n    canvas.getContext(\"2d\");\n});\n\n\n//# sourceURL=webpack://Asteroids/./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\n\nwindow.MovingObject = MovingObject;\nwindow.Asteroid = Asteroid;\n\n\n\nconsole.log(\"Webpack is working!\");\n\n//Ready function - on load will execute\ndocument.addEventListener(\"DOMContentLoaded\", function(){\n    const canvas = document.getElementById(\"game-canvas\");\n\n    const ctx = canvas.getContext(\"2d\");\n    \n    // for testing purposes\n    window.ctx = ctx;\n    window.canvas = canvas;\n});\n\n\n\n\n\n\n//# sourceURL=webpack://Asteroids/./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +35,17 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
   \******************************/
 /***/ ((module) => {
 
-eval("// 2D position.\n// 2D velocity.\n// radius(everything in the game is a circle).\n// color\n// class MovingObject {\n//     constructor(pos, vel, radius, color){\n//         this.pos = pos;\n//         this.vel = vel;\n//         this.radius = radius;\n//         this.color = color;\n//     }\n// }\n\nfunction MovingObject(pos, vel, radius, color){\n    this.pos = pos;\n    this.vel = vel;\n    this.radius = radius;\n    this.color = color;\n}\n\nMovingObject.prototype.draw = function(ctx){\n    ctx.fillStyle = this.color;\n    ctx.beginPath();\n    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);\n    ctx.fill();\n}\n\nMovingObject.prototype.move = function(){\n    this.pos ++;\n    this.vel ++;\n}\n\nmodule.exports = MovingObject;\n\nconst mo = new MovingObject({\n    pos: [30, 30],\n    vel: [10, 10],\n    radius: 5,\n    color: \"#00FF00\"\n});\n\n\n\n//# sourceURL=webpack://Asteroids/./src/moving_object.js?");
+eval("function MovingObject(options){\n    this.pos = options.pos;\n    this.vel = options.vel;\n    this.radius = options.radius;\n    this.color = options.color;\n}\n\nMovingObject.prototype.draw = function(ctx){\n    ctx.fillStyle = this.color;\n    ctx.beginPath();\n    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);\n    ctx.fill();\n}\n\nMovingObject.prototype.move = function(){\n    this.pos ++;\n    this.vel ++;\n}\n\nconst mo = new MovingObject({\n    pos: [30, 30],\n    vel: [10, 10],\n    radius: 5,\n    color: \"#00FF00\"\n});\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack://Asteroids/./src/moving_object.js?");
+
+/***/ }),
+
+/***/ "./src/util.js":
+/*!*********************!*\
+  !*** ./src/util.js ***!
+  \*********************/
+/***/ ((module) => {
+
+eval("Util.inherits = function(childClass, parentClass) {\n    function Surrogate() {};\n    Surrogate.prototype = parentClass.prototype;\n    childClass.prototype = new Surrogate();\n    childClass.prototype.constructor = childClass;\n}\n\nconst Util = {\n    randomVec(length) {\n      const deg = 2 * Math.PI * Math.random();\n      return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n    },\n    // Scale the length of a vector by the given amount.\n    scale(vec, m) {\n      return [vec[0] * m, vec[1] * m];\n    }\n  };\n\nmodule.exports = Util;\n\n//# sourceURL=webpack://Asteroids/./src/util.js?");
 
 /***/ })
 
