@@ -6,5 +6,7 @@ window.Game = Game;
 
 document.addEventListener("DOMContentLoaded", () => {
   // find the container element in the view created in dist/index.html
-
+  const ttt = document.getElementsByClassName("ttt");
+  const game = new Game();
+  const view = new View(game, ttt);
 });
