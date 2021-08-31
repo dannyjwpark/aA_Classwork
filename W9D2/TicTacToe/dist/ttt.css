@@ -1,3 +1,11 @@
+html, body, figure, ul, li, h1, title {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
 ul{
     display: flex; 
     flex-wrap: wrap;
@@ -5,6 +13,13 @@ ul{
     border: 5px solid black;
 }
 
-li{
-    
+li {
+    width: 90px;
+    height: 90px;
+    background: gray;
+    border: 5px solid black;
+}
+
+li:hover {
+    background: yellow;
 }

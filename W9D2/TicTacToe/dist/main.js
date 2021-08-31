@@ -9,23 +9,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./dist/ttt.css":
-/*!**********************!*\
-  !*** ./dist/ttt.css ***!
-  \**********************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack:///./dist/ttt.css?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ../dist/ttt.css */ \"./dist/ttt.css\");  // require appropriate file\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\");  // require appropriate file\n\nwindow.View = View;\nwindow.Game = Game;\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // find the container element in the view created in dist/index.html\n\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ../src/ttt-view.js */ \"./src/ttt-view.js\");  // require appropriate file\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\");  // require appropriate file\n\n// window.View = View;\n// window.Game = Game;\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // find the container element in the view created in dist/index.html\n  // const ttt = document.querySelector(\".ttt\");\n  const ttt = document.querySelectorAll(\".ttt\")[0];\n  const game = new Game();\n  // const view = new View(game, ttt);\n  console.log(ttt);\n  new View(game, ttt);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/ttt-view.js":
+/*!*************************!*\
+  !*** ./src/ttt-view.js ***!
+  \*************************/
+/***/ ((module) => {
+
+eval("class View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n    // this.handleClick();\n    this.setupBoard();\n    // this.bindEvents();\n  }\n\nsetupBoard() {\n    const ul = document.createElement(\"ul\");\n    // debugger;\n    for(let i = 0; i < 3; i++){\n      for(let j = 0; j < 3; j++){\n        const li = document.createElement(\"li\");\n        // li.dataset.index = JSON.parse([i, j]);\n        li.dataset.index = JSON.stringify([i, j]);\n        ul.appendChild(li);\n      }\n    }\n  this.el.appendChild(ul);\n  }\n  \n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 
