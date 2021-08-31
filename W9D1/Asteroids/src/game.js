@@ -25,6 +25,8 @@ Game.prototype.randomPosition = function() {
 
 Game.prototype.draw = function(ctx) {
     ctx.clearRect(0,0,DEFAULTS.DIM_X, DEFAULTS.DIM_Y);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, DEFAULTS.DIM_X, DEFAULTS.DIM_Y);
     for(let i = 0; i < this.asteroids.length; i++) {
         this.asteroids[i].draw(ctx)
     }
@@ -37,6 +39,15 @@ Game.prototype.moveObjects = function () {
     }
 }
 
+Game.prototype.checkCollisions = function () {
+    for (let i = 0; i < this.asteroids.length; i++) {
+        for (let j = i + 1; j < this.asteroids.length; j++) {
+            if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
+                alert("COLLISION");
+            }
+        }
+    }
+}
 
 Game.prototype.wrap = function(pos) {
     let x = pos[0];
@@ -57,6 +68,13 @@ Game.prototype.wrap = function(pos) {
      return [x,y];
 }
 
+Game.prototype.step = function () {
+    this.moveObjects();
+    this.checkCollisions();
+}
 
+Game.prototype.remove = function(asteroid){
+    this.asteroids.splice(this.asteroids.length);
+}
 
 module.exports = Game;

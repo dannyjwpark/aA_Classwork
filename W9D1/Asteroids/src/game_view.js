@@ -9,7 +9,7 @@ GameView.prototype.start = function() {
     let that = this;
     setInterval(() => {
         this.game.draw(this.ctx);
-        this.game.moveObjects();
+        this.game.step();
     }, 20);
 }
 
