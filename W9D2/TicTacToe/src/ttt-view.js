@@ -2,9 +2,9 @@ class View {
   constructor(game, el) {
     this.game = game;
     this.el = el;
-    // this.handleClick();
+    this.handleClick();
     this.setupBoard();
-    // this.bindEvents();
+    this.bindEvents();
   }
 
 setupBoard() {
@@ -24,9 +24,27 @@ setupBoard() {
   
   bindEvents() {}
 
-  handleClick(e) {}
+  handleClick(e) {
+    let click = e.target;
+    if(click.li.class === undefined){
+      makeMove(e);
+    }
+  }
 
-  makeMove(square) {}
+  makeMove(square) {
+    // show the current players 
+    let currentPlayer = this.game.currentPlayer;
+    // add or remove css classes
+    //  change the background to white after the game is over
+    //  display x and o in different colors
+    // if invalid move, pop alert
+    try{
+      this.game.playMove();
+    } 
+    catch(err){
+      "invalid move"
+    }
+  }
 
 }
 
