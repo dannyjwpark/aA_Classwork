@@ -1,51 +1,86 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/api_util.js":
+/*!******************************!*\
+  !*** ./frontend/api_util.js ***!
+  \******************************/
+/***/ ((module) => {
+
+const APIUtil = {
+  followUser: id => {
+    return $.ajax({
+      url: `/users/${id}/follow`,
+      method: 'POST',
+      dataType: 'JSON'
+    })
+  },
+
+  unfollowUser: id => {
+    return $.ajax({
+      url: `/users/${id}/follow`,
+      method: 'DELETE',
+      dataType: 'JSON'
+  })
+  }
+};
+
+module.exports = APIUtil;
+
+/***/ }),
+
 /***/ "./frontend/follow_toggle.js":
 /*!***********************************!*\
   !*** ./frontend/follow_toggle.js ***!
   \***********************************/
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const APIUtil = __webpack_require__(/*! ./api_util */ "./frontend/api_util.js");
 
 class FollowToggle {
     constructor(el){
-        this.userId = this.$el.data("user_id");
-        this.followState = this.$el.data("initial_follow_state");
         this.$el = $(el);
+        this.userId = this.$el.data("user-id");
+        this.followState = this.$el.data("initial-follow-state");
         this.render();
         // installing (setting up) handleClick
         this.$el.on("click", this.handleClick.bind(this));
     }
     
     render(){
+        console.log(this.followState);
         if(this.followState === "followed"){
             // alert("Follow!");
-            this.$el.text("Follow!");
+            this.$el.html("Unfollow!");
         } else if (this.followState === "unfollowed") {
             // alert("Unfollow!");
-            this.$el.text("Unfollow!");
+            this.$el.html("Follow!");
         }
     }
 
     handleClick(){
-        this.$el.preventDefault();
+        event.preventDefault();
         // if !follows(user)
-        if (this.followState === "followed"){
-            return $.ajax({
-                url: `/users/${this.userId}/follow`,
-                method: 'POST',
-                dataType: 'JSON'
-            }).then((response) => {
-                this.$el.data("initial_follow_state", "unfollowed");
-            })
-        } else if (this.followState === "unfollowed"){
-            return $.ajax({
-                url: `/users/${this.userId}/follow`,
-                method: 'DELETE',
-                dataType: 'JSON'
-            }).then((response) => {
-                this.$el.data("initial_follow_state", "followed");
-            })
+        if (this.followState === "unfollowed"){
+            APIUtil.followUser(this.userId)
+              .then((response) => {
+                  // console.log(response);
+                  this.$el.data("initial-follow-state", "followed");
+                  this.followState = "followed";
+                  this.render();
+              }).fail(() => {
+                  alert("Already following");
+              });
+        } else if (this.followState === "followed"){
+            APIUtil.unfollowUser(this.userId)
+              .then((response) => {
+                  // console.log(response);
+                  this.$el.data("initial-follow-state", "unfollowed");
+                  this.followState = "unfollowed";
+                  this.render();
+              }).fail(() => {
+                  alert("Already unfollowed");
+              });
         }
     }
     
@@ -92,15 +127,20 @@ var __webpack_exports__ = {};
   \*****************************/
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 
-$(".follow-toggle").each(function(){
-  new FollowToggle($(this));
+$(() => {
+  $("button.follow-toggle").each((idx, el) => {
+    new FollowToggle(el);
 
+  })
 })
+
+
 
 
 // $("li").each(function (index) {
 //     console.log(index + ": " + $(this).text());
 // });
+
 })();
 
 /******/ })()
