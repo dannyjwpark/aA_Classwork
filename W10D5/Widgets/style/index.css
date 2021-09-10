@@ -1,0 +1,56 @@
+html {
+    display: block;
+}
+
+/* body {
+    display: flex;
+    justify-content: space-around;
+} */
+
+body{
+    font-family: Open Sans;
+    line-height: 1.2;
+  }
+  
+  
+.interactive{
+    display: flex;
+    justify-content: flex-start;
+}
+
+html, body, h1, p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    color: inherit;
+    background: transparent;
+}
+
+.clock {
+    font-size: 28px;
+    color: white;
+    font-family: Orbitron;
+    width: 550px;
+    height: 94px;
+    border: 2px solid black;
+    margin: 0 20px 20px 20px;
+    padding: 10px;
+    background-color: orange;
+    background-size: cover;
+}
+
+
+.clock > p {
+    margin: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px 10px 10px 20px;
+}
