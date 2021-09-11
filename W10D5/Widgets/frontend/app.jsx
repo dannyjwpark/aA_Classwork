@@ -1,6 +1,6 @@
 import React from 'react';
 import Clock from './clock'
-import Tab from './tab'
+import Tabs from './tabs'
 
 let tabData = [
     { title: "One", content: "I am the first" },
@@ -13,7 +13,7 @@ function App(){
         <div>
             <Clock/>
             {/* passing via props */}
-            <Tab data={tabData}/>
+            <Tabs panes={tabData}/>
         </div>
     )
 }
