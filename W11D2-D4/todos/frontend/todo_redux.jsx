@@ -12,8 +12,8 @@ import {allTodos} from "./reducers/selectors";
 document.addEventListener("DOMContentLoaded", () => {
     const preloadedState = {
         todos: {
-            1: {id:1 ,title:"a", body:"did a", completed: true}, 
-            2: {id:2 ,title:"b", body:"will do b", completed: false}
+            1: {id:1 ,title:"todo_a", body:"did a", completed: true}, 
+            2: {id:2 ,title:"todo_b", body:"will do b", completed: false}
         }
     };
     const store = configureStore(preloadedState);
