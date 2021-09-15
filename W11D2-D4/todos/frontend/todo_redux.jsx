@@ -10,7 +10,12 @@ import {allTodos} from "./reducers/selectors";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const store = configureStore();
+    const preloadedState = {todos: 
+        {1: {id:1 ,title:"a", body:"did a", completed: true}, 
+        2: {id:2 ,title:"b", body:"will do b", completed: false}}
+    };
+    const store = configureStore(preloadedState);
+
     window.todoAction = receiveTodo;
     window.todosAction = receiveTodos;
     window.todoremoveAction = removeTodo;
@@ -19,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.stepremoveAction = removeStep;
     window.store = store;
     window.allTodos = allTodos;
+
     // <Root /> fix dis on Wednesday
-    ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"))
+    ReactDOM.render(<Root store={store} />, document.getElementById("root"))
 })

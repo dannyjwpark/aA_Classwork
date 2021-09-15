@@ -1,3 +1,5 @@
 export function allTodos(state) {
-  return Object.values(state.todos);
+  return {
+    todos: Object.values(state.todos)
+  }
 }

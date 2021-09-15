@@ -1,10 +1,18 @@
-const mapStateToProps = state => ({
-    todos: allTodos(state)
-});
+import { connect } from "react-redux"
+import TodoList from "./todo_list"
+import { receiveTodo } from "../../actions/todo_actions"
 
-const mapDispatchToProps = dispatch => ({
-    receiveTodo: todo => dispatch(receiveTodo(todo))
-});
+const mapStateToProps = (state) => {
+    return {
+        todos: Object.values(state.todos)
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        receiveTodo: (todo) => dispatch(receiveTodo(todo))
+    }
+}
 
 export default connect(
     mapStateToProps,
