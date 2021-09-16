@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import TodoDetailView from "./todo_detail_view";
+import StepListItem from "./step_list_item";
 import { receiveStep, removeStep} from "../../actions/step_actions"
 
 const mapDispatchToProps = (dispatch) => {
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(TodoDetailView);
+export default connect(null, mapDispatchToProps)(StepListItem);

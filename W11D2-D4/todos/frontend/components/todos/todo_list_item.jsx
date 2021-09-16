@@ -14,9 +14,8 @@ export default class TodoListItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleCompleted = this.handleCompleted.bind(this);
         this.handleDetail = this.handleDetail.bind(this);
-        this.showDetail = this.showDetail.bind(this);
-    }
-    handleDelete(e) {
+        // this.showDetail = this.showDetail.bind(this);
+    }    handleDelete(e) {
         e.preventDefault();
         this.props.removeTodo({id: this.props.todo.id})
         // console.log(this.props)
@@ -36,27 +35,23 @@ export default class TodoListItem extends React.Component {
         console.log(this.state.detail);
     }
 
-    showDetail() {
-        console.log("is this creating loop still?");
-        if (this.state.detail) {
-            return  (
-                <div>
-                    <h4>TodoDetailViewContainer</h4> 
-                    <TodoDetailViewContainer />
-                </div>
-                )
-            
-        } else {
-            return null
-        }
+        
 
-    }
+        
+
 
     componentDidMount() {
         
     }
 
     render(){
+        const { todo, updateTodo } = this.props;
+        const { title, completed } = todo;
+        let detail;
+        if (this.state.detail) {
+            detail = <TodoDetailViewContainer todo={ todo } />;
+        }
+
         return(
             <li>
                 <div onClick={this.handleDetail}>{this.props.todo.title}</div>
@@ -65,7 +60,7 @@ export default class TodoListItem extends React.Component {
                 <button onClick={this.handleCompleted}>Done!</button>
                 {/* <input type="checkbox" value={this.props.todo.completed} onClick={this.handleCompleted} /> */}
                 <ul>
-                    {this.showDetail()}
+                    {detail}
                 </ul>
             </li>
         )

@@ -6,7 +6,7 @@ export default class StepList extends React.Component {
     render(){
         return(
             <ul>
-                <StepListItemContainer/>
+                {/* <StepListItemContainer/> */}
                 This is the step list
                 {/* <StepForm/> */}
             </ul>
