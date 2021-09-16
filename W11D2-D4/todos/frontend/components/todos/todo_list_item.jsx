@@ -1,5 +1,5 @@
 import React from "react"
-import TodoDetailView from "./todo_detail_view";
+import TodoDetailViewContainer from "./todo_detail_view_container";
 
 export default class TodoListItem extends React.Component {
     constructor(props){
@@ -37,14 +37,18 @@ export default class TodoListItem extends React.Component {
     }
 
     showDetail() {
+        console.log("is this creating loop still?");
         if (this.state.detail) {
-            return  (<TodoDetailView />)
+            return  (
+                <div>
+                    <h4>TodoDetailViewContainer</h4> 
+                    <TodoDetailViewContainer />
+                </div>
+                )
             
         } else {
             return null
         }
-        // console.log('hello')
-        // return (<h3>showDetail not working</h3>)
 
     }
 

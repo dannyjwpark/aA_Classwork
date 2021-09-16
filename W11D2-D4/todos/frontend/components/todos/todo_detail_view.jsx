@@ -2,6 +2,8 @@
 // the todo item's other information.
 
 import React from "react";
+import StepListContainer from "../step_list/step_list_container"
+// import StepList from "../step_list/step_list"
 
 class TodoDetailView extends React.Component {
   constructor(props) {
@@ -12,7 +14,10 @@ class TodoDetailView extends React.Component {
     return (
       <div>
         {this.props.body}
-        {/* <Steps /> */}
+        <div>
+          <StepListContainer />
+          {/* <StepList /> */}
+        </div>
         Steps go here!
       </div>
     )

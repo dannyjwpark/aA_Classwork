@@ -14,7 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
         todos: {
             1: {id:1 ,title:"todo_a", body:"did a", completed: true}, 
             2: {id:2 ,title:"todo_b", body:"will do b", completed: false}
+        },
+        steps:{
+            1: {id: 1, title: "", body: "",done: false, todo_id: 1},
+            2: {id: 2, title: "", body: "",done: false, todo_id: 1},
         }
+
     };
     const store = configureStore(preloadedState);
 
