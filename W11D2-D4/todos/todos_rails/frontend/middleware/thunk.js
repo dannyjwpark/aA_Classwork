@@ -14,7 +14,7 @@
 // 	}
 // }
 const thunk = store => next => action => {
-  console.log('thunk is working')
+  console.log('thunk is working');
   if (typeof action === "function") {
     return action(dispatch, getState);
   }

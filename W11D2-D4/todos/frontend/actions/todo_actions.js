@@ -1,3 +1,4 @@
+import * as APIUtil from '../util/todo_api_util'
 export const RECEIVE_TODOS = "RECEIVE_TODOS";
 export const RECEIVE_TODO = "RECEIVE_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
@@ -23,3 +24,13 @@ export const removeTodo = (todo) => {
     todo: todo
   }
 }
+
+export const fetchTodos = () => dispatch => {
+  return APIUtil.fetchTodos()
+    .then(response => dispatch(receiveTodos(response)));
+}
+
+// export const fetchAllTeas = () => dispatch => {
+//   return TeaApiUtil.getTeas()
+//     .then(teas => dispatch(receiveAllTeas(teas)));
+// };
