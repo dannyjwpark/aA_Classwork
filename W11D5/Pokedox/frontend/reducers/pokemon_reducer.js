@@ -1,6 +1,6 @@
 import {RECEIVE_ALL_POKEMON} from '../actions/pokemon_actions'
 
-export const pokemonReducer = (state={}, action) => {
+const pokemonReducer = (state={}, action) => {
     Object.freeze(state);
     const nextState = Object.assign({}, state);
 
@@ -13,3 +13,5 @@ export const pokemonReducer = (state={}, action) => {
             return state;
     }
 }
+
+export default pokemonReducer;
