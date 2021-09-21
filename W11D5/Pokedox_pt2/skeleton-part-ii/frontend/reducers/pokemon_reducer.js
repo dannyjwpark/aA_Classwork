@@ -5,9 +5,11 @@ const pokemonReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type){
   case RECEIVE_ALL_POKEMON:
-    return Object.assign({}, action.pokemon, state);
+    return Object.assign({}, state, action.pokemon);
   case RECEIVE_SINGLE_POKEMON:
-      return Object.assign({}, action.pokemon)
+      let nextState = Object.assign({},state)
+      nextState[action.payload.pokemon.id] = action.payload.pokemon
+      return nextState
   default:
     return state;
   }
